@@ -11,6 +11,24 @@
 
     <artifactId>standalone-jaxws</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>ru.ifmo.wst.lab1.App</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <desctiptorRef>jar-with-dependencies</desctiptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.sun.jersey</groupId>
