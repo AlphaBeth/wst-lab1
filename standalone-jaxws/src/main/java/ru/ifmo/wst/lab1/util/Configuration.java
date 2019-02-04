@@ -1,4 +1,4 @@
-package ru.ifmo.wst.util;
+package ru.ifmo.wst.lab1.util;
 
 import lombok.SneakyThrows;
 

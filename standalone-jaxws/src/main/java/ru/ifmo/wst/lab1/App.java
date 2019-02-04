@@ -1,8 +1,8 @@
 package ru.ifmo.wst.lab1;
 
 import lombok.extern.slf4j.Slf4j;
+import ru.ifmo.wst.lab1.util.Configuration;
 import ru.ifmo.wst.lab1.ws.TestService;
-import ru.ifmo.wst.util.Configuration;
 
 import javax.xml.ws.Endpoint;
 
