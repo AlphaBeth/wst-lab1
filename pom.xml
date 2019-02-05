@@ -18,6 +18,7 @@
 
     <modules>
         <module>standalone-jaxws</module>
+        <module>jaxws-client</module>
     </modules>
 
 
