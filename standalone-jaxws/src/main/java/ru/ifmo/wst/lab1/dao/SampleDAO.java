@@ -12,15 +12,16 @@ public class SampleDAO {
     private final DataSource dataSource;
 
     public List<String> sampleSelect() throws SQLException {
-        Connection connection = dataSource.getConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("SELECT * FROM (values ('a')) as vals");
-        ResultSet rs = statement.getResultSet();
-        List<String> res = new ArrayList<>();
-        while (rs.next()) {
-            res.add(rs.getString(1));
+        try (Connection connection = dataSource.getConnection()) {
+            Statement statement = connection.createStatement();
+            statement.execute("SELECT * FROM (values ('a')) as vals");
+            ResultSet rs = statement.getResultSet();
+            List<String> res = new ArrayList<>();
+            while (rs.next()) {
+                res.add(rs.getString(1));
+            }
+            return res;
         }
-        return res;
     }
 
     public SampleDAO(DataSource dataSource) {
