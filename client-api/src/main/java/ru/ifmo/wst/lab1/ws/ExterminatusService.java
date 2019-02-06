@@ -36,7 +36,7 @@ public interface ExterminatusService {
     @Action(input = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAllRequest", output = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAllResponse", fault = {
             @FaultAction(className = SQLException_Exception.class, value = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAll/Fault/SQLException")
     })
-    public List<ExterminatusEntity> findAll()
+    List<ExterminatusEntity> findAll()
             throws SQLException_Exception
     ;
 
@@ -57,7 +57,7 @@ public interface ExterminatusService {
     @Action(input = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filterRequest", output = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filterResponse", fault = {
             @FaultAction(className = SQLException_Exception.class, value = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filter/Fault/SQLException")
     })
-    public List<ExterminatusEntity> filter(
+    List<ExterminatusEntity> filter(
             @WebParam(name = "id", targetNamespace = "")
                     Long id,
             @WebParam(name = "initiator", targetNamespace = "")
