@@ -3,10 +3,10 @@ package ru.ifmo.wst.lab1.dao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ru.ifmo.wst.lab1.model.ExterminatusEntity;
-import ru.ifmo.wst.lab1.util.db.DefaultCondition;
-import ru.ifmo.wst.lab1.util.db.IgnoreCaseContainsCondition;
-import ru.ifmo.wst.lab1.util.db.Query;
-import ru.ifmo.wst.lab1.util.db.QueryBuilder;
+import ru.ifmo.wst.lab1.db.DefaultCondition;
+import ru.ifmo.wst.lab1.db.IgnoreCaseContainsCondition;
+import ru.ifmo.wst.lab1.db.Query;
+import ru.ifmo.wst.lab1.db.QueryBuilder;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

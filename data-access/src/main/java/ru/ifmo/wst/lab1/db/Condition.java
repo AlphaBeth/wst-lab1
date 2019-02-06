@@ -1,4 +1,4 @@
-package ru.ifmo.wst.lab1.util.db;
+package ru.ifmo.wst.lab1.db;
 
 public interface Condition {
     String build();
