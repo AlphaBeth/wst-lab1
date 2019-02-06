@@ -23,7 +23,6 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Filter_QNAME = new QName("http://ws.lab1.wst.ifmo.ru/", "filter");
-    private final static QName _SQLException_QNAME = new QName("http://ws.lab1.wst.ifmo.ru/", "SQLException");
     private final static QName _FilterResponse_QNAME = new QName("http://ws.lab1.wst.ifmo.ru/", "filterResponse");
     private final static QName _FindAllResponse_QNAME = new QName("http://ws.lab1.wst.ifmo.ru/", "findAllResponse");
     private final static QName _FindAll_QNAME = new QName("http://ws.lab1.wst.ifmo.ru/", "findAll");
@@ -39,13 +38,6 @@ public class ObjectFactory {
      */
     public Filter createFilter() {
         return new Filter();
-    }
-
-    /**
-     * Create an instance of {@link SQLException }
-     */
-    public SQLException createSQLException() {
-        return new SQLException();
     }
 
     /**
@@ -70,34 +62,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link Throwable }
-     */
-    public Throwable createThrowable() {
-        return new Throwable();
-    }
-
-    /**
-     * Create an instance of {@link SqlException }
-     */
-    public SqlException createSqlException() {
-        return new SqlException();
-    }
-
-    /**
-     * Create an instance of {@link StackTraceElement }
-     */
-    public StackTraceElement createStackTraceElement() {
-        return new StackTraceElement();
-    }
-
-    /**
      * Create an instance of {@link ExterminatusEntity }
      */
     public ExterminatusEntity createExterminatusEntity() {
@@ -110,14 +74,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.lab1.wst.ifmo.ru/", name = "filter")
     public JAXBElement<Filter> createFilter(Filter value) {
         return new JAXBElement<Filter>(_Filter_QNAME, Filter.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SQLException }{@code >}}
-     */
-    @XmlElementDecl(namespace = "http://ws.lab1.wst.ifmo.ru/", name = "SQLException")
-    public JAXBElement<SQLException> createSQLException(SQLException value) {
-        return new JAXBElement<SQLException>(_SQLException_QNAME, SQLException.class, null, value);
     }
 
     /**

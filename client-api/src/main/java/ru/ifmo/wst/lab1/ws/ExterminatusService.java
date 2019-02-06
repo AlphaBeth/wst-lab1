@@ -7,7 +7,6 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Action;
-import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 import java.util.List;
@@ -26,21 +25,6 @@ public interface ExterminatusService {
 
 
     /**
-     * @return returns java.util.List<ru.ifmo.wst.lab1.ws.ExterminatusEntity>
-     * @throws SQLException_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findAll", targetNamespace = "http://ws.lab1.wst.ifmo.ru/", className = "ru.ifmo.wst.lab1.ws.FindAll")
-    @ResponseWrapper(localName = "findAllResponse", targetNamespace = "http://ws.lab1.wst.ifmo.ru/", className = "ru.ifmo.wst.lab1.ws.FindAllResponse")
-    @Action(input = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAllRequest", output = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAllResponse", fault = {
-            @FaultAction(className = SQLException_Exception.class, value = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAll/Fault/SQLException")
-    })
-    List<ExterminatusEntity> findAll()
-            throws SQLException_Exception
-    ;
-
-    /**
      * @param date
      * @param reason
      * @param method
@@ -48,16 +32,13 @@ public interface ExterminatusService {
      * @param initiator
      * @param id
      * @return returns java.util.List<ru.ifmo.wst.lab1.ws.ExterminatusEntity>
-     * @throws SQLException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "filter", targetNamespace = "http://ws.lab1.wst.ifmo.ru/", className = "ru.ifmo.wst.lab1.ws.Filter")
     @ResponseWrapper(localName = "filterResponse", targetNamespace = "http://ws.lab1.wst.ifmo.ru/", className = "ru.ifmo.wst.lab1.ws.FilterResponse")
-    @Action(input = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filterRequest", output = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filterResponse", fault = {
-            @FaultAction(className = SQLException_Exception.class, value = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filter/Fault/SQLException")
-    })
-    List<ExterminatusEntity> filter(
+    @Action(input = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filterRequest", output = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/filterResponse")
+    public List<ExterminatusEntity> filter(
             @WebParam(name = "id", targetNamespace = "")
                     Long id,
             @WebParam(name = "initiator", targetNamespace = "")
@@ -69,8 +50,16 @@ public interface ExterminatusService {
             @WebParam(name = "planet", targetNamespace = "")
                     String planet,
             @WebParam(name = "date", targetNamespace = "")
-                    XMLGregorianCalendar date)
-            throws SQLException_Exception
-    ;
+                    XMLGregorianCalendar date);
+
+    /**
+     * @return returns java.util.List<ru.ifmo.wst.lab1.ws.ExterminatusEntity>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findAll", targetNamespace = "http://ws.lab1.wst.ifmo.ru/", className = "ru.ifmo.wst.lab1.ws.FindAll")
+    @ResponseWrapper(localName = "findAllResponse", targetNamespace = "http://ws.lab1.wst.ifmo.ru/", className = "ru.ifmo.wst.lab1.ws.FindAllResponse")
+    @Action(input = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAllRequest", output = "http://ws.lab1.wst.ifmo.ru/ExterminatusService/findAllResponse")
+    public List<ExterminatusEntity> findAll();
 
 }

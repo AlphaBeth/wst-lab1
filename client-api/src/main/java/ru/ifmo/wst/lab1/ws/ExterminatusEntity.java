@@ -1,7 +1,5 @@
 package ru.ifmo.wst.lab1.ws;
 
-import lombok.ToString;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -40,7 +38,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
         "planet",
         "reason"
 })
-@ToString
 public class ExterminatusEntity {
 
     @XmlSchemaType(name = "dateTime")
