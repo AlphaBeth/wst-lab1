@@ -1,5 +1,6 @@
 package ru.ifmo.wst.lab1.ws;
 
+import lombok.SneakyThrows;
 import ru.ifmo.wst.lab1.dao.SampleDAO;
 
 import javax.jws.WebMethod;
@@ -21,7 +22,8 @@ public class TestDAOService {
     }
 
     @WebMethod
-    public List<String> testDAO() throws SQLException {
+    @SneakyThrows
+    public List<String> testDAO() {
         return dao.sampleSelect();
     }
 }
