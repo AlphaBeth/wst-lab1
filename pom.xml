@@ -19,7 +19,6 @@
     <modules>
         <module>standalone-jaxws</module>
         <module>jaxws-client</module>
-        <module>client-api</module>
         <module>data-access</module>
         <module>deployment-jaxws</module>
     </modules>
