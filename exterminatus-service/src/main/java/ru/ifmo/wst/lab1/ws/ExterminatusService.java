@@ -30,6 +30,10 @@ public class ExterminatusService {
         return exterminatusDAO.filter(id, initiator, reason, method, planet, date);
     }
 
+    public ExterminatusService(ExterminatusDAO exterminatusDAO) {
+        this.exterminatusDAO = exterminatusDAO;
+    }
+
     public ExterminatusService() {
     }
 }

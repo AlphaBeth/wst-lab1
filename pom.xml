@@ -21,6 +21,7 @@
         <module>jaxws-client</module>
         <module>data-access</module>
         <module>deployment-jaxws</module>
+        <module>exterminatus-service</module>
     </modules>
 
     <build>
@@ -64,6 +65,11 @@
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
                 <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
             </dependency>
 
         </dependencies>

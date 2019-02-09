@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>ru.ifmo.wst</groupId>
-            <artifactId>standalone-jaxws</artifactId>
+            <artifactId>exterminatus-service</artifactId>
             <classifier>client</classifier>
             <version>1.0</version>
         </dependency>
