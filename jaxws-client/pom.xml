@@ -18,7 +18,8 @@
         </dependency>
         <dependency>
             <groupId>ru.ifmo.wst</groupId>
-            <artifactId>client-api</artifactId>
+            <artifactId>standalone-jaxws</artifactId>
+            <classifier>client</classifier>
             <version>1.0</version>
         </dependency>
     </dependencies>
