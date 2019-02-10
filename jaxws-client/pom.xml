@@ -11,6 +11,33 @@
 
     <artifactId>jaxws-client</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>ru.ifmo.wst.lab1.ConsoleClient</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <desctiptorRef>jar-with-dependencies</desctiptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
