@@ -4,4 +4,6 @@ Just run it and see what happens.
 
 ## Build and run
 
-TODO
+`mvn clean package`
+
+`java -jar target/jaxws-client-1.0-jar-with-dependencies.jar`
