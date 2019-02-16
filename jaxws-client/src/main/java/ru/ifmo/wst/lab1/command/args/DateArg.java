@@ -1,6 +1,6 @@
 package ru.ifmo.wst.lab1.command.args;
 
-import ru.ifmo.wst.lab1.command.AbstractCommandArg;
+import ru.ifmo.wst.lab1.command.AbstractCommandArgDescription;
 import ru.ifmo.wst.lab1.command.ConvertException;
 
 import java.text.ParseException;
@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.BiConsumer;
 
-public class DateArg<C> extends AbstractCommandArg<Date, C> {
+public class DateArg<C> extends AbstractCommandArgDescription<Date, C> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 

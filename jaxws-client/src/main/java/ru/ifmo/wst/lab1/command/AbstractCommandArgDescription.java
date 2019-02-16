@@ -4,7 +4,7 @@ import lombok.Getter;
 
 import java.util.function.BiConsumer;
 
-public abstract class AbstractCommandArg<T, C> implements CommandArg<T, C> {
+public abstract class AbstractCommandArgDescription<T, C> implements CommandArgDescription<T, C> {
     @Getter
     private final String errorMessage;
     @Getter
@@ -14,7 +14,7 @@ public abstract class AbstractCommandArg<T, C> implements CommandArg<T, C> {
     private final BiConsumer<C, T> consumer;
 
 
-    public AbstractCommandArg(String errorMessage, String name, String description, BiConsumer<C, T> consumer) {
+    public AbstractCommandArgDescription(String errorMessage, String name, String description, BiConsumer<C, T> consumer) {
         this.errorMessage = errorMessage;
         this.name = name;
         this.description = description;

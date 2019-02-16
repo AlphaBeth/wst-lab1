@@ -2,7 +2,7 @@ package ru.ifmo.wst.lab1;
 
 import lombok.SneakyThrows;
 import ru.ifmo.wst.lab1.command.Command;
-import ru.ifmo.wst.lab1.command.CommandArg;
+import ru.ifmo.wst.lab1.command.CommandArgDescription;
 import ru.ifmo.wst.lab1.command.args.DateArg;
 import ru.ifmo.wst.lab1.command.args.EmptyStringToNull;
 import ru.ifmo.wst.lab1.command.args.LongArg;
@@ -97,7 +97,7 @@ public class ConsoleClient {
         }
     }
 
-    private static <T, C> CommandArg<T, C> toNull(CommandArg<T, C> commandArg) {
+    private static <T, C> CommandArgDescription<T, C> toNull(CommandArgDescription<T, C> commandArg) {
         return new EmptyStringToNull<>(commandArg);
     }
 

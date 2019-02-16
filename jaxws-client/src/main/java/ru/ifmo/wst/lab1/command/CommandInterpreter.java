@@ -44,7 +44,7 @@ public class CommandInterpreter {
             return null;
         }
         Object o = matchedCommand.newValue();
-        for (CommandArg arg : matchedCommand.getArgs()) {
+        for (CommandArgDescription arg : matchedCommand.getArgs()) {
             while (true) {
                 prompt(arg.getDescription());
                 String currLine = nextLine();

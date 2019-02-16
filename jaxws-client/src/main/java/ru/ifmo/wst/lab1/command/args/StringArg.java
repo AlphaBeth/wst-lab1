@@ -1,10 +1,10 @@
 package ru.ifmo.wst.lab1.command.args;
 
-import ru.ifmo.wst.lab1.command.AbstractCommandArg;
+import ru.ifmo.wst.lab1.command.AbstractCommandArgDescription;
 
 import java.util.function.BiConsumer;
 
-public class StringArg<C> extends AbstractCommandArg<String, C> {
+public class StringArg<C> extends AbstractCommandArgDescription<String, C> {
     public StringArg(String errorMessage, String name, String description, BiConsumer<C, String> consumer) {
         super(errorMessage, name, description, consumer);
     }

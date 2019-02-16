@@ -16,7 +16,7 @@ public class Command<V> {
     @Getter
     private final String description;
     @Getter
-    private final List<CommandArg<?, V>> args;
+    private final List<CommandArgDescription<?, V>> args;
     private final Supplier<V> valueProducer;
 
     public Command(String name, String description) {
