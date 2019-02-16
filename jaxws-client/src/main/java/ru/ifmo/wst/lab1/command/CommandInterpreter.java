@@ -1,7 +1,5 @@
 package ru.ifmo.wst.lab1.command;
 
-import ru.ifmo.wst.lab1.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -40,10 +38,10 @@ public class CommandInterpreter {
         });
     }
 
-    public Pair<Command, Object> readCommand() {
+    public void readCommand() {
         prompt(commandPrompt);
         String line = nextLine();
-        Command<?> matchedCommand = null;
+        Command matchedCommand = null;
         for (Command<?> command : commands) {
             if (line.trim().equals(command.getName())) {
                 matchedCommand = command;
@@ -51,10 +49,10 @@ public class CommandInterpreter {
         }
         if (matchedCommand == null) {
             newLineMessage(noCommandMessage);
-            return null;
+            return;
         }
         Object o = matchedCommand.newValue();
-        for (CommandArg arg : matchedCommand.getArgs()) {
+        for (CommandArg arg : (List<CommandArg>) matchedCommand.getArgs()) {
             CommandArgDescription argDescription = arg.getArgDescription();
             while (true) {
                 prompt(argDescription.getDescription());
@@ -68,7 +66,11 @@ public class CommandInterpreter {
                 }
             }
         }
-        return new Pair<>(matchedCommand, o);
+        matchedCommand.execute(o);
+    }
+
+    public void addCommand(Command<?> command) {
+        this.commands.add(command);
     }
 
     private void message(String message) {
