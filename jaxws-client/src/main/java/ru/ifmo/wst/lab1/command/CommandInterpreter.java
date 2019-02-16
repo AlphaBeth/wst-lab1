@@ -1,13 +1,12 @@
 package ru.ifmo.wst.lab1.command;
 
-import lombok.RequiredArgsConstructor;
 import ru.ifmo.wst.lab1.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-@RequiredArgsConstructor
 public class CommandInterpreter {
     private static final String COMMAND_SEPARATOR = "==============";
     private final Supplier<String> lineProducer;
@@ -16,6 +15,16 @@ public class CommandInterpreter {
     private final String noCommandMessage;
     private final String commandPrompt;
     private final String argPrompt;
+
+    public CommandInterpreter(Supplier<String> lineProducer, Consumer<String> messageConsumer,
+                              List<Command<?>> commands, String noCommandMessage, String commandPrompt, String argPrompt) {
+        this.lineProducer = lineProducer;
+        this.messageConsumer = messageConsumer;
+        this.commands = new ArrayList<>(commands);
+        this.noCommandMessage = noCommandMessage;
+        this.commandPrompt = commandPrompt;
+        this.argPrompt = argPrompt;
+    }
 
     public void info() {
         newLineMessage("List of commands: ");
