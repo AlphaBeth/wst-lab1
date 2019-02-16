@@ -3,8 +3,8 @@ package ru.ifmo.wst.lab1.command.args;
 import ru.ifmo.wst.lab1.command.CommandArgDescription;
 import ru.ifmo.wst.lab1.command.CommandArgDescriptionWrapper;
 
-public class EmptyStringToNull<T, C> extends CommandArgDescriptionWrapper<T, C> {
-    public EmptyStringToNull(CommandArgDescription<T, C> wrapped) {
+public class EmptyStringToNull<T> extends CommandArgDescriptionWrapper<T> {
+    public EmptyStringToNull(CommandArgDescription<T> wrapped) {
         super(wrapped);
     }
 

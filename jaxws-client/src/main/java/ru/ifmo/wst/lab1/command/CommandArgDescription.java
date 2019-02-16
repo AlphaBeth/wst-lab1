@@ -1,6 +1,6 @@
 package ru.ifmo.wst.lab1.command;
 
-public interface CommandArgDescription<T, C> {
+public interface CommandArgDescription<T> {
     String getName();
 
     String getDescription();
@@ -9,5 +9,4 @@ public interface CommandArgDescription<T, C> {
 
     T convertFromString(String arg);
 
-    void acceptConverted(T converted, C consumer);
 }

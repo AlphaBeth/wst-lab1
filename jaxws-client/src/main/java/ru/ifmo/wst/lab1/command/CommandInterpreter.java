@@ -24,7 +24,8 @@ public class CommandInterpreter {
             newLineMessage(command.getName() + " - " + command.getDescription());
             newLineMessage("Command arguments:");
             command.getArgs().forEach(arg -> {
-                newLineMessage(arg.getName() + " - " + arg.getDescription());
+                CommandArgDescription<?> argDescription = arg.getArgDescription();
+                newLineMessage(argDescription.getName() + " - " + argDescription.getDescription());
             });
             newLineMessage(COMMAND_SEPARATOR);
         });
@@ -34,7 +35,7 @@ public class CommandInterpreter {
         prompt(commandPrompt);
         String line = nextLine();
         Command<?> matchedCommand = null;
-        for (Command command : commands) {
+        for (Command<?> command : commands) {
             if (line.trim().equals(command.getName())) {
                 matchedCommand = command;
             }
@@ -44,16 +45,17 @@ public class CommandInterpreter {
             return null;
         }
         Object o = matchedCommand.newValue();
-        for (CommandArgDescription arg : matchedCommand.getArgs()) {
+        for (CommandArg arg : matchedCommand.getArgs()) {
+            CommandArgDescription argDescription = arg.getArgDescription();
             while (true) {
-                prompt(arg.getDescription());
+                prompt(argDescription.getDescription());
                 String currLine = nextLine();
                 try {
-                    Object converted = arg.convertFromString(currLine);
-                    arg.acceptConverted(converted, o);
+                    Object converted = argDescription.convertFromString(currLine);
+                    arg.acceptArgValue(o, converted);
                     break;
                 } catch (ConvertException exc) {
-                    newLineMessage(arg.getErrorMessage());
+                    newLineMessage(argDescription.getErrorMessage());
                 }
             }
         }

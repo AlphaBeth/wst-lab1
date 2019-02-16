@@ -2,6 +2,7 @@ package ru.ifmo.wst.lab1;
 
 import lombok.SneakyThrows;
 import ru.ifmo.wst.lab1.command.Command;
+import ru.ifmo.wst.lab1.command.CommandArg;
 import ru.ifmo.wst.lab1.command.CommandArgDescription;
 import ru.ifmo.wst.lab1.command.args.DateArg;
 import ru.ifmo.wst.lab1.command.args.EmptyStringToNull;
@@ -44,19 +45,19 @@ public class ConsoleClient {
         Command<Void> infoCommand = new Command<>("info", "Print help for commands");
         Command<Box<String>> changeEndpointAddressCommand = new Command<>("endpoint", "Changes endpoint address",
                 asList(
-                        new StringArg<>("Not a string", "url", "New exterminatus endpoint url", Box::setValue)
+                        new CommandArg<>(new StringArg("url", "New exterminatus endpoint url"), Box::setValue)
                 ), Box::new
         );
         Command<Void> findAllCommand = new Command<>("findAll", "Return list of all exterminatus entities");
         Command<Filter> filterCommand = new Command<>("filter",
                 "Filter exterminatus entities by column values (ignore case contains for strings), empty values are ignored",
                 asList(
-                        toNull(new LongArg<>("id", "Exterminatus id", Filter::setId)),
-                        toNull(new StringArg<>("initiator", "Initiator name", Filter::setInitiator)),
-                        toNull(new StringArg<>("reason", "Reason of exterminatus", Filter::setReason)),
-                        toNull(new StringArg<>("method", "Method of exterminatus", Filter::setMethod)),
-                        toNull(new StringArg<>("planet", "Exterminated planet", Filter::setPlanet)),
-                        toNull(new DateArg<>("date", "Date of exterminatus", (filter, date) -> filter.setDate(fromDate(date))))
+                        new CommandArg<>(toNull(new LongArg("id", "Exterminatus id")), Filter::setId),
+                        new CommandArg<>(toNull(new StringArg("initiator", "Initiator name")), Filter::setInitiator),
+                        new CommandArg<>(toNull(new StringArg("reason", "Reason of exterminatus")), Filter::setReason),
+                        new CommandArg<>(toNull(new StringArg("method", "Method of exterminatus")), Filter::setMethod),
+                        new CommandArg<>(toNull(new StringArg("planet", "Exterminated planet")), Filter::setPlanet),
+                        new CommandArg<>(toNull(new DateArg("date", "Date of exterminatus")), (filter, date) -> filter.setDate(fromDate(date)))
                 ),
                 Filter::new);
         Command<Void> exitCommand = new Command<>("exit", "Exit application");
@@ -97,7 +98,7 @@ public class ConsoleClient {
         }
     }
 
-    private static <T, C> CommandArgDescription<T, C> toNull(CommandArgDescription<T, C> commandArg) {
+    private static <T> CommandArgDescription<T> toNull(CommandArgDescription<T> commandArg) {
         return new EmptyStringToNull<>(commandArg);
     }
 
