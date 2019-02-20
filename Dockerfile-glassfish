@@ -1,0 +1,25 @@
+FROM openjdk:8-stretch
+ARG ADMIN_PASS=admin
+
+ENV GLASSFISH_BASE /usr/local/glassfish
+ENV GLASSFISH_HOME $GLASSFISH_BASE/glassfish4
+ENV DOMAIN_HOME $GLASSFISH_HOME/glassfish/domains/domain1
+
+RUN mkdir $GLASSFISH_BASE
+WORKDIR $GLASSFISH_BASE
+
+RUN wget http://download.oracle.com/glassfish/4.0/release/glassfish-4.0.zip\
+        && unzip glassfish-4.0.zip\
+        && rm glassfish-4.0.zip
+RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.5.jar\
+        && mv postgresql-42.2.5.jar $DOMAIN_HOME/lib/
+
+WORKDIR $GLASSFISH_HOME
+COPY ./docker-files/domain.xml $DOMAIN_HOME/config
+
+WORKDIR $GLASSFISH_BASE
+COPY ./docker-files/start-glassfish.sh .
+RUN chmod a+x start-glassfish.sh
+
+EXPOSE 4848 8080 8181
+ENTRYPOINT ./start-glassfish.sh

@@ -1,0 +1,44 @@
+version: '3.5'
+services:
+  build-app:
+    volumes:
+      - application:/app
+    build: .
+  standalone-exterminatus:
+    depends_on:
+      - postgres
+      - build-app
+    ports:
+      - "9999:8080"
+    expose:
+      - "8080"
+    image: "openjdk:8-stretch"
+    entrypoint: "java -jar /app/standalone-jaxws/target/standalone-jaxws-1.0-jar-with-dependencies.jar"
+    links:
+      - "postgres:postgres"
+    volumes:
+      - application:/app
+  postgres:
+    build:
+      dockerfile: Dockerfile-data
+      context: .
+    volumes:
+      - exterminatus-data:/var/lib/postgresql/data
+  glassfish:
+    depends_on:
+      - build-app
+      - postgres
+    build:
+      context: .
+      dockerfile: Dockerfile-glassfish
+    volumes:
+      - application:/build
+    ports:
+      - "9090:8080"
+      - "9191:8181"
+      - "9393:4848"
+volumes:
+  application:
+    name: application
+  exterminatus-data:
+    name: exterminatus-data
