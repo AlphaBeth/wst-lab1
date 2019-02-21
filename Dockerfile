@@ -19,6 +19,7 @@ COPY ./standalone-jaxws/ /build-tmp/standalone-jaxws/
 
 COPY ./docker-files/config.properties /build-tmp/standalone-jaxws/src/main/resources/
 COPY ./docker-files/datasource.properties /build-tmp/standalone-jaxws/src/main/resources/
+COPY ./docker-files/glassfish-web.xml /build-tmp/deployment-jaxws/src/main/webapp/WEB-INF/
 
 RUN mvn clean install
 ENTRYPOINT cp -r /build-tmp/* /build/
