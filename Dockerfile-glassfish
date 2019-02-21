@@ -1,4 +1,4 @@
-FROM openjdk:8-stretch
+FROM openjdk:8
 ARG ADMIN_PASS=admin
 
 ENV GLASSFISH_BASE /usr/local/glassfish
@@ -13,6 +13,9 @@ RUN wget http://download.oracle.com/glassfish/4.0/release/glassfish-4.0.zip\
         && rm glassfish-4.0.zip
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.5.jar\
         && mv postgresql-42.2.5.jar $DOMAIN_HOME/lib/
+RUN apt-get update && apt-get install -y netcat
+
+COPY ./docker-files/wait-for /usr/bin
 
 WORKDIR $GLASSFISH_HOME
 COPY ./docker-files/domain.xml $DOMAIN_HOME/config
@@ -39,4 +42,4 @@ COPY ./docker-files/start-glassfish.sh .
 RUN chmod a+x start-glassfish.sh
 
 EXPOSE 4848 8080 8181
-ENTRYPOINT ./start-glassfish.sh
+CMD ./start-glassfish.sh
